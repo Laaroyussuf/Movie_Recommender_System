@@ -4,20 +4,24 @@ import pandas as pd
 import numpy as np
 import pickle
 from random import shuffle
+import glob
 
 #Loading Files
 user_item = pickle.load(open('user_item.pkl', 'rb'))
 user_similarity = pickle.load(open('user_similarity.pkl', 'rb'))
 item_tag = pickle.load(open('item_tag.pkl', 'rb'))
 title_poster_path = pickle.load(open('title_poster_path.pkl', 'rb'))
-split_0 = pickle.load(open('split_0.pkl', 'rb')) 
-split_1 = pickle.load(open('split_1.pkl', 'rb')) 
-split_2 = pickle.load(open('split_2.pkl', 'rb')) 
-split_3 = pickle.load(open('split_3.pkl', 'rb')) 
-split_4 = pickle.load(open('split_4.pkl', 'rb')) 
-split_5 = pickle.load(open('split_5.pkl', 'rb')) 
-split_6 = pickle.load(open('split_6.pkl', 'rb'))
-similarity = np.concatenate([split_0, split_1, split_2, split_3, split_4, split_5, split_6]) 
+
+split_files = sorted(glob.glob(f'split_*.pkl'))
+# Load each split file and concatenate them back together
+splits = []
+for split_file in split_files:
+    with open(split_file, 'rb') as f:
+        split = pickle.load(f)
+        splits.append(split)
+# Concatenate the splits back into the original dataset
+data = np.concatenate(splits, axis=0)
+similarity = data
 # all_title = pickle.load(open('all_title.pkl', 'rb'))
 # similarity = pickle.load(open('similarity.pkl', 'rb'))
 
