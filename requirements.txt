@@ -1,6 +1,4 @@
 pandas
 numpy
-pickle
-random
 glob
 streamlit == 1.24.0
