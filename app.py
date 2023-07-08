@@ -89,23 +89,6 @@ st.header('Movie Recommendation System')
 st.markdown('**Popular Movies (recent till 2020)**')
 top_5 = title_poster_path.Recommendation.values[:5]
 show_result(top_5, title_poster_path.poster_path.values)
-# col1, col2, col3, col4, col5 = st.columns(5)
-# with col1:
-#     st.text(top_5[0])
-#     st.image(title_poster_path.poster_path.values[0])
-# with col2:
-#     st.text(top_5[1])
-#     st.image(title_poster_path.poster_path.values[1])
-# with col3:
-#     st.text(top_5[2])
-#     st.image(title_poster_path.poster_path.values[2])
-# with col4:
-#     st.text(top_5[3])
-#     st.image(title_poster_path.poster_path.values[3])
-# with col5:
-#     st.text(top_5[4])
-#     st.image(title_poster_path.poster_path.values[4])
-
 
 
 
@@ -116,24 +99,7 @@ if st.button('Recommend'):
     mov_result = movie_based_recommendation(selected_movies)
     poster_urls = get_poster_url(mov_result)
     show_result(mov_result, poster_urls)
-    # col1, col2, col3, col4, col5 = st.columns(5)
-    # with col1:
-    #     st.text(mov_result[0])
-    #     st.image(poster_urls[0])
-    # with col2:
-    #     st.text(mov_result[1])
-    #     st.image(poster_urls[1])
-    # with col3:
-    #     st.text(mov_result[2])
-    #     st.image(poster_urls[2])
-    # with col4:
-    #     st.text(mov_result[3])
-    #     st.image(poster_urls[3])
-    # with col5:
-    #     st.text(mov_result[4])
-    #     st.image(poster_urls[4])
-
-
+    
 
 st.header('Movie Recommendation for User')
 user_ids = user_item.index.tolist()
@@ -146,19 +112,4 @@ if st.button("Get Movies Recommendation"):
     mov_result = recommend_movie(id=input1, title=input2)
     poster_urls = get_poster_url(mov_result)
     show_result(mov_result, poster_urls)
-    # col1, col2, col3, col4, col5 = st.columns(5)
-    # with col1:
-    #     st.text(mov_result[0])
-    #     st.image(poster_urls[0])
-    # with col2:
-    #     st.text(mov_result[1])
-    #     st.image(poster_urls[1])
-    # with col3:
-    #     st.text(mov_result[2])
-    #     st.image(poster_urls[2])
-    # with col4:
-    #     st.text(mov_result[3])
-    #     st.image(poster_urls[3])
-    # with col5:
-    #     st.text(mov_result[4])
-    #     st.image(poster_urls[4])
+    
