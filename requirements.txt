@@ -1,0 +1,9 @@
+<<<<<<< HEAD
+pandas
+numpy
+glob
+=======
+pandas == 2.0.3
+numpy == 1.23.3
+>>>>>>> efeec1b8fdb8b840cd48ee9c8c3267955a6b5c28
+streamlit == 1.24.0
