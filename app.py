@@ -4,7 +4,6 @@ import pandas as pd
 import numpy as np
 import pickle
 from random import shuffle
-import glob
 
 #Loading Files
 user_item = pd.read_pickle(open('user_item.pkl', 'rb'))
@@ -12,16 +11,8 @@ user_similarity = pd.read_pickle(open('user_similarity.pkl', 'rb'))
 item_tag = pd.read_pickle(open('item_tag.pkl', 'rb'))
 title_poster_path = pd.read_pickle(open('title_poster_path.pkl', 'rb'))
 
-
-split_files = sorted(glob.glob(f'split_*.pkl'))
 # Load each split file and concatenate them back together
 splits = []
-# for split_file in split_files:
-#     with open(split_file, 'rb') as f:
-#         split = pd.read_pickle(f)
-#         splits.append(split)
-# Concatenate the splits back into the original dataset
-# data = np.concatenate(splits, axis=0)
 for i in range(21):
     with open(f'split_{i}.pkl', 'rb') as f:
         split = pd.read_pickle(f)
