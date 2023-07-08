@@ -22,8 +22,7 @@ for split_file in split_files:
 # Concatenate the splits back into the original dataset
 data = np.concatenate(splits, axis=0)
 similarity = data
-# all_title = pickle.load(open('all_title.pkl', 'rb'))
-# similarity = pickle.load(open('similarity.pkl', 'rb'))
+
 
 #Functions
 
