@@ -5,6 +5,8 @@ import numpy as np
 import pickle
 from random import shuffle
 
+st.set_page_config(layout='wide')
+
 #Loading Files
 user_item = pd.read_pickle(open('user_item.pkl', 'rb'))
 user_similarity = pd.read_pickle(open('user_similarity.pkl', 'rb'))
@@ -78,6 +80,7 @@ def recommend_movie(id, title):
         return final_rec[:10]
 
 def show_result(title, poster):
+    #Display the title and the poster
     for ind, col in enumerate(st.columns(5)):
         with col:
             st.text(title[ind])
@@ -99,7 +102,9 @@ if st.button('Recommend'):
     mov_result = movie_based_recommendation(selected_movies)
     poster_urls = get_poster_url(mov_result)
     show_result(mov_result, poster_urls)
+    st.markdown('**NB:** Some movies poster are unable to display because some of the links are broken.')
     
+
 
 st.header('Movie Recommendation for User')
 user_ids = user_item.index.tolist()
@@ -112,4 +117,5 @@ if st.button("Get Movies Recommendation"):
     mov_result = recommend_movie(id=input1, title=input2)
     poster_urls = get_poster_url(mov_result)
     show_result(mov_result, poster_urls)
+    st.markdown('**NB:** Some movies poster are unable to display because some of the links are broken.')
     
